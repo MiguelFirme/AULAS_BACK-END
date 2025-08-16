@@ -1,10 +1,11 @@
 package org.example;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Exercicio06();
+        Exercicio08();
     }
 
     static void introdução() {
@@ -79,4 +80,36 @@ public class Main {
         System.out.println("Média: " + media);
     }
 
+    static void Exercicio07(){
+
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Digite o seu peso: ");
+        double peso = entrada.nextDouble();
+        Scanner entrada2 = new Scanner(System.in);
+        System.out.println("Digite sua altura: ");
+        double altura = entrada2.nextDouble();
+
+
+        double imc = peso/(altura*altura);
+
+        System.out.println("SEU IMC: " + imc);
+    }
+
+    static void Exercicio08(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Digite seu nome: ");
+        String nome = entrada.nextLine();
+        int quantLetras = nome.length();
+        String maiuscula = nome.toUpperCase();
+
+        boolean temSilva = nome.toLowerCase().contains("silva");
+
+        if (temSilva) {
+            System.out.println("O nome contém 'silva'.");
+        } else {
+            System.out.println("O nome não contém 'silva'.");
+        }
+
+        System.out.println("Nome: " + maiuscula + "\nPossui " + quantLetras + " Caaracteres" + "\n");
+    }
 }
