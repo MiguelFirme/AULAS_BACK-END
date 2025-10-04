@@ -44,4 +44,20 @@ public class JogadorService {
     public void deleteJogador(UUID id) {
         jogadorRepository.deleteById(id);
     }
+
+    public Optional<Jogador> atualizarParcialmente(UUID id, Jogador jogadorDetalhes) {
+
+        return jogadorRepository.findById(id).map(jogadorExistente -> {
+
+            if (jogadorDetalhes.getNome() != null) {
+                jogadorExistente.setNome(jogadorDetalhes.getNome());
+            }
+
+            if (jogadorDetalhes.getSobrenome() != null) {
+                jogadorExistente.setSobrenome(jogadorDetalhes.getSobrenome());
+            }
+
+            return jogadorRepository.save(jogadorExistente);
+        });
+    }
 }

@@ -43,6 +43,7 @@ public class JogadorController {
         return jogador
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+
     }
 
     @DeleteMapping("/{id}")
@@ -53,5 +54,15 @@ public class JogadorController {
         }
         jogadorService.deleteJogador(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Jogador> patchJogador(@PathVariable UUID id, @RequestBody Jogador jogadorDetalhes) {
+
+        Optional<Jogador> jogadorAtualizado = jogadorService.atualizarParcialmente(id, jogadorDetalhes);
+
+        return jogadorAtualizado
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
